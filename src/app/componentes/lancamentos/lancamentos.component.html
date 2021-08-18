@@ -1,12 +1,19 @@
 <p>Data e hora: {{ dataHoraAtual }}</p>
-<p><button (click) = "atualizarDataHora()">Atualizar data</button></p>
+<p><button (click)="atualizarDataHora()">Atualizar data</button></p>
 <p>Data em tempo real: {{ dataTempoReal }}</p>
-<p><a (click) = "downloadCSV()"><i class="bi-file-earmark-excel"></i></a></p>
+<p><a (click)="downloadCSV()">
+  <i class="bi-file-earmark-excel"></i>
+</a>
+<a (click)="downloadPDF()" data-toggle="tooltip" title="PDF">
+  <i class="bi-file-earmark-pdf"></i>
+</a>
+
+</p>
 <h4 style="text-align: center;">
-Lancamentos
+  Lancamentos
 </h4>
 <div class="p-3 mb-2 bg-dark text-white container-fluid">
-<table class="table table-dark">
+  <table class="table table-dark">
     <thead>
       <tr>
         <th scope="col">ID</th>
@@ -17,12 +24,12 @@ Lancamentos
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor ="let lancamento of lancamentos">
+      <tr *ngFor="let lancamento of lancamentos">
         <td>{{ lancamento.id }}</td>
         <td>{{lancamento.data | data | date: "dd/MM/yyyy"}}</td>
         <td>{{lancamento.data | hora}}</td>
         <td>{{ lancamento.tipo | tipo}}</td>
-        <td><a [href]= "urlLocalizacao(lancamento.localizacao)" target="_blank">{{lancamento.localizacao}}</a></td>
+        <td><a [href]="urlLocalizacao(lancamento.localizacao)" target="_blank">{{lancamento.localizacao}}</a></td>
       </tr>
     </tbody>
   </table>

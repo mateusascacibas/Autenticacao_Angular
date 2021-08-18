@@ -48,6 +48,10 @@ export class LancamentosComponent implements OnInit, OnDestroy {
   downloadCSV(){
     this.lancamentoService.downloadCSV(this.lancamentos)
   }
+
+  downloadPDF(){
+    this.lancamentoService.downloadPDF(this.lancamentos)
+  }
   /* tipoPonto(tipo: String){
     return tipo = tipo.charAt(0).toUpperCase() + tipo.slice(1).toLowerCase().replace("_", " ");
   }/**/ 
