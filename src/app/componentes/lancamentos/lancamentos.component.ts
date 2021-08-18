@@ -4,6 +4,7 @@ import { Subscription } from 'rxjs';
 import { DataHoraService } from 'src/app/servicos/data-hora.service';
 import { LancamentoService } from 'src/app/servicos/lancamento.service';
 import { Lancamentos } from '../models/lancamentos';
+import { saveAs } from 'file-saver';
 
 @Component({
   selector: 'app-lancamentos',
@@ -42,6 +43,10 @@ export class LancamentosComponent implements OnInit, OnDestroy {
   }
   atualizarDataHora(){
     this.dataHoraService.atualizarDataHora();
+  }
+
+  downloadCSV(){
+    this.lancamentoService.downloadCSV(this.lancamentos)
   }
   /* tipoPonto(tipo: String){
     return tipo = tipo.charAt(0).toUpperCase() + tipo.slice(1).toLowerCase().replace("_", " ");
